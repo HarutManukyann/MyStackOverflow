@@ -14,6 +14,7 @@ namespace SteckOverflow.Controllers
     {
         MyContext context = new MyContext();
 
+      
         public IActionResult PostList(string sortOrder, string searchString)
         {
             ViewData["IdSortParm"] = sortOrder == "Id" ? "Id_desc" : "Id";
@@ -60,6 +61,7 @@ namespace SteckOverflow.Controllers
             }
             return View(names.ToList());
         }
+
         public ActionResult InPost(int postId)
         {
             var userid = HttpContext.Session.GetInt32("Id");
