@@ -1,0 +1,141 @@
+﻿@model SteckOverflow.Models.PostModel
+
+
+@{
+    ViewData["Title"] = "Post";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Ask a public question</h1>
+            <div style="text-align:center">
+                <img src="https://www.pinclipart.com/picdir/big/152-1520728_frequently-asked-questions-about-acr-homes-services-man.png" style="width:290px">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="https://debug.to/debug/img/Have-a-technical-question.png" style="width:450px ">
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-7">
+            <div class="card myCard">
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <h1 style="font-size:1rem">Title</h1>
+                        <p style="font-size:small">Be specific and imagine you’re asking a question to another person</p>
+                        <div class="form-group">
+                            <input asp-for="Title" class="form-control" placeholder="e.g. Is there an R function for finding the index of an element in a vector?" style="font-size:small" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <br>
+                        <h1 style="font-size:1rem">Body</h1>
+                        <p style="font-size:small"> Include all the information someone would need to answer your question </p>
+                        <div class="form-group">
+                            <textarea asp-for="QuestionText" class="form-control" style="resize:none ; height:250px"></textarea>
+                            <span asp-validation-for="QuestionText" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <input type="submit" value="Post" class="btn btn-success" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card myCard">
+                <div class="card-body">
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                    Step 1: Draft your question
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                <div class="accordion-body" style="font-size:small">
+                                    The community is here to help you with specific coding, algorithm, or language problems.<br><br>Avoid asking opinion-based questions.
+                                </div>
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                <storng>
+                                                    1. Summarize the problem
+                                                </storng>
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <ul style="font-size:smaller">
+                                                    <li>Include details about your goal</li>
+                                                    <li>Describe expected and actual results</li>
+                                                    <li>Include any error messages</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                                <storng> 2. Describe what you've tried</storng>
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" style="font-size:smaller">Show what you’ve tried and tell us what you found (on this site or elsewhere) and why it didn’t meet your needs. You can get better answers when you provide research.</div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                                <storng> 3. Show some code</storng>
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" style="font-size:smaller">When appropriate, share the minimum amount of code others need to reproduce your problem (also called a minimum, reproducible example).</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card myCard">
+                <div class="card-body">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Have a non-programming question?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body" style="font-size:smaller">
+                                    Super user<br>Troubleshooting hardware and software issues<br><br>Software engineering
+                                    <br>For software development methods and process questions<br><br>Hardware recommendations
+                                    <br><br>Software recommendations <br><br>Ask questions about the site on meta
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

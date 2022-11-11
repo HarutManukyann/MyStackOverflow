@@ -1,0 +1,15 @@
+﻿@model AnswerModel
+
+
+<form asp-action="CreateAns"  >
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <textarea asp-for="Text" class="form-control" style="resize:none ; height:250px"></textarea>
+        <input asp-for="PostId" type ="hidden" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

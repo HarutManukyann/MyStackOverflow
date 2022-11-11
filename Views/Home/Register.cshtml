@@ -1,0 +1,72 @@
+﻿@model SteckOverflow.Models.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <h2 class="title-size">Join the Stack Overflow community</h2>
+        <ul class="list-group list-group-flush">
+
+            <li class="list-group-item" style="background-color:whitesmoke"><img src="https://img.icons8.com/external-others-ghozy-muhtarom/64/external-question-commerce-flat-dashed-others-ghozy-muhtarom.png" class="logosize">Get unstuck — ask a question</li>
+            <li class="list-group-item" style="background-color:whitesmoke"><img src="https://img.icons8.com/ios/344/thumbs-up-down.png" class="logosize">Unlock new privileges like voting and commenting</li>
+            <li class="list-group-item" style="background-color:whitesmoke"><img src="https://img.icons8.com/fluency/344/tags.png" class="logosize">Save your favorite tags, filters, and jobs</li>
+            <li class="list-group-item" style="background-color:whitesmoke"><img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-reputation-public-relations-agency-flaticons-lineal-color-flat-icons-2.png" class="logosize">Earn reputation and badges</li>
+
+        </ul>
+        <p style="font-size:12px">
+            Collaborate and share knowledge with a private group for FREE.<br>Get Stack Overflow for Teams free for up to 50 users.
+        </p>
+    </div>
+
+    <div class="col-md-4">
+        <div style="text-align:center">
+            <h2 style="font-size:larger">Create your Stack Overflow account. It’s free and only takes a minute.</h2>
+        </div>
+        <div class="card myCard">
+            <div class="card-body">
+
+                <form asp-action="Register">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="text-align:center">
+                        <br>
+                        <input type="submit" value="Sign up" class="btn btn-danger" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
+@*<div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

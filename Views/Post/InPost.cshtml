@@ -1,0 +1,90 @@
+﻿@model SteckOverflow.Models.PostModel
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "InPost";
+}
+@{string check = Context.Session.GetString("Email");
+    int? checkid = Context.Session.GetInt32("Id");
+}
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+
+
+        <div class="col-md-7">
+            <div class="card myCard">
+                <div class="card-body">
+                    <h3>
+                        @Html.DisplayFor(modelItem => Model.Title)
+
+                    </h3>
+
+                    <p>
+
+                        @Html.DisplayFor(modelItem => Model.QuestionText)
+                    </p>
+                    <div style="text-align:right ; font-size:x-small">
+
+                        User ID:
+                        @Html.DisplayFor(modelItem => Model.UserId)
+                        |
+                        Question ID:
+                        @Html.DisplayFor(modelItem => Model.Id)
+                        |
+                        @Html.DisplayFor(modelItem => Model.PostedDate)
+                        |
+                        @Html.DisplayFor(modelItem => Model.ClosedDate)
+
+                    </div>
+
+
+                    @if (Model.UserId == checkid)
+                    {
+                        <div style="text-align:right ; font-size:medium">
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+
+                            @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+                        </div>
+                    }
+                    <hr>
+                    <h3>Answers</h3>
+                    <hr>
+                    @foreach (var item in Model.Answers)
+                    {
+                        <p>@item.Text</p>
+                        <div style="text-align:right ; font-size:x-small">
+
+                            User:
+                            @Html.DisplayFor(modelItem => item.AnswerUserFirstName)
+                            @Html.DisplayFor(modelItem => item.AnswerUserLastName)
+                            |
+                            Answer ID:
+                            @Html.DisplayFor(modelItem => item.Id)
+                            |
+                            @Html.DisplayFor(modelItem => item.AnsweredDate)
+
+
+                        </div>
+                        <hr>
+                    }
+                    <div id="CreateAnsw">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var getAnswerFormUrl = "@Url.Action("CreateAns", "Post" , new {postId = Model.Id })";
+</script>
+@*<script src="~/js/Answer.js"></script>*@
