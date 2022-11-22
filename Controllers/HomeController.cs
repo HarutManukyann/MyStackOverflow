@@ -3,13 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SteckOverflow.DataModel.Models;
 using SteckOverflow.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 using static SteckOverflow.DataModel.ApplicationContext;
 
 namespace SteckOverflow.Controllers
@@ -50,11 +45,11 @@ namespace SteckOverflow.Controllers
             }
             var db = new MyContext();
             var user = db.Users.Where(x => x.Email == Model.Email && x.Password == Model.Password).SingleOrDefault();
-                if (user == null)
-                {
-                    ModelState.AddModelError("", "Wrong Email or password.");
-                    return View(Model);
-                }
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Wrong Email or password.");
+                return View(Model);
+            }
             HttpContext.Session.SetString("Email", user.Email);
             HttpContext.Session.SetInt32("Id", user.Id);
 
@@ -76,25 +71,25 @@ namespace SteckOverflow.Controllers
                 return View(Rmodel);
             }
             UserEntity user = new UserEntity();
-                if (db.Users.Any(x => x.Email == Rmodel.Email))
-                {
-                    ModelState.AddModelError("", "User with this email already exists.");
-                    return View(Rmodel);
-                }
-                if (Rmodel.Password.Length < 5 && Rmodel.Password.Length > 20)
-                {
-                    ModelState.AddModelError("", "Password length must be 5-20.");
-                    return View(Rmodel);
+            if (db.Users.Any(x => x.Email == Rmodel.Email))
+            {
+                ModelState.AddModelError("", "User with this email already exists.");
+                return View(Rmodel);
+            }
+            if (Rmodel.Password.Length < 5 && Rmodel.Password.Length > 20)
+            {
+                ModelState.AddModelError("", "Password length must be 5-20.");
+                return View(Rmodel);
 
-                }
+            }
 
-                user.FirstName = Rmodel.FirstName;
-                user.LastName = Rmodel.LastName;
-                user.Email = Rmodel.Email;
-                user.Password = Rmodel.Password;
+            user.FirstName = Rmodel.FirstName;
+            user.LastName = Rmodel.LastName;
+            user.Email = Rmodel.Email;
+            user.Password = Rmodel.Password;
 
-                db.Add(user);
-                db.SaveChanges();
+            db.Add(user);
+            db.SaveChanges();
 
             HttpContext.Session.SetString("Email", user.Email);
             HttpContext.Session.SetInt32("Id", user.Id);
@@ -106,10 +101,10 @@ namespace SteckOverflow.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
 
         }
-      
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

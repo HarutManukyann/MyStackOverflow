@@ -2,10 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SteckOverflow.DataModel.Models;
 using SteckOverflow.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using static SteckOverflow.DataModel.ApplicationContext;
 
 namespace SteckOverflow.Controllers
@@ -14,7 +11,7 @@ namespace SteckOverflow.Controllers
     {
         MyContext context = new MyContext();
 
-      
+
         public IActionResult PostList(string sortOrder, string searchString)
         {
             ViewData["IdSortParm"] = sortOrder == "Id" ? "Id_desc" : "Id";

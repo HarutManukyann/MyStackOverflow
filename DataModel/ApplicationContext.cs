@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SteckOverflow.DataModel.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace SteckOverflow.DataModel
@@ -19,8 +15,8 @@ namespace SteckOverflow.DataModel
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 //optionsBuilder.UseSqlServer("Data Source=s5;Initial Catalog=Harut_Stack;User Id=sa;Password=sa.123");
-               optionsBuilder.UseSqlServer("Data Source=DESKTOP-H5DPS4S;Database=netCore.Project;Trusted_Connection=True;MultipleActiveResultSets=true");
-                
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-H5DPS4S;Database=netCore.Project;Trusted_Connection=True;MultipleActiveResultSets=true");
+
 
             }
         }
